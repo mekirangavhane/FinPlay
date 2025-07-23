@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [RouterModule], // Standalone imports
+  imports: [RouterModule, TranslateModule],
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss'] // <-- Fix here
+  styleUrl: './chat.component.scss' // Corrected typo
 })
 export class ChatComponent {
 

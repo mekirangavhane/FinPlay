@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core'; // <-- Import TranslateModule
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [RouterModule], // Standalone imports
+  imports: [TranslateModule], // <-- Add TranslateModule here
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'] // <-- Fix here
+  styleUrl: './admin.component.scss' // <-- Corrected from styleUrls
 })
 export class AdminComponent {
 

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-learn',
   standalone: true,
-  imports: [RouterModule], // Standalone imports
+  imports: [RouterOutlet, TranslateModule],
   templateUrl: './learn.component.html',
-  styleUrl: './learn.component.scss'
+  styleUrl: './learn.component.scss',
 })
 export class LearnComponent {
-
+  // Logic has been moved to child components
 }

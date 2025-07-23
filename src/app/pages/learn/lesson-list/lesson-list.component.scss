@@ -1,0 +1,142 @@
+// Define component-level CSS variables for a consistent theme
+:host {
+  --card-bg: #ffffff;
+  --card-border-radius: 16px;
+  --card-shadow: 0 6px 20px -4px rgba(45, 55, 72, 0.1);
+  --card-border: 1px solid #e2e8f0;
+  --primary-accent: #7c3aed; // A vibrant purple for learning
+  --primary-accent-light: #f5f3ff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --completed-bg: #f8fafc;
+  --completed-border: #e2e8f0;
+  --completed-text: #94a3b8;
+}
+
+.lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.lesson-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.lesson-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--card-bg);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+  padding: 1.5rem;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(45, 55, 72, 0.12);
+  }
+}
+
+.lesson-icon {
+  font-size: 2rem;
+  background-color: var(--primary-accent-light);
+  height: 50px;
+  width: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--primary-accent);
+  flex-shrink: 0;
+}
+
+.lesson-details {
+  flex-grow: 1;
+}
+
+.lesson-type {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lesson-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.lesson-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.lesson-action {
+  .lp-btn {
+    background: var(--primary-accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #6d28d9;
+    }
+  }
+}
+
+// Styling for completed items
+.lesson-card.completed {
+  background: var(--completed-bg);
+  border-color: var(--completed-border);
+
+  .lesson-icon {
+    background-color: #e2e8f0;
+    color: var(--completed-text);
+  }
+
+  .lesson-type,
+  .lesson-title,
+  .lesson-description {
+    color: var(--completed-text);
+  }
+
+  .lesson-action .lp-btn {
+    background: #e2e8f0;
+    color: #475569;
+    &:hover {
+      background: #cbd5e1;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  .lesson-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .lesson-action {
+    width: 100%;
+    margin-top: 1rem;
+    .lp-btn {
+      width: 100%;
+    }
+  }
+}

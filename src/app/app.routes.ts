@@ -1,26 +1,63 @@
 import { Routes } from '@angular/router';
 
-import { LandingComponent } from './pages/landing/landing.component';
-import { OnboardingComponent } from './pages/onboarding/onboarding.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ChatComponent } from './pages/chat/chat.component';
-import { StressComponent } from './pages/stress/stress.component';
-import { BadgesComponent } from './pages/badges/badges.component';
-import { LearnComponent } from './pages/learn/learn.component';
-import { SavingsComponent } from './pages/savings/savings.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { AdminComponent } from './pages/admin/admin.component';
-
 export const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'onboarding', component: OnboardingComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'chat', component: ChatComponent },
-  { path: 'stress', component: StressComponent },
-  { path: 'badges', component: BadgesComponent },
-  { path: 'learn', component: LearnComponent },
-  { path: 'savings', component: SavingsComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: '**', redirectTo: '' }
+  {
+    path: '',
+    loadComponent: () => import('./pages/landing/landing.component').then(m => m.LandingComponent)
+  },
+  {
+    path: 'onboarding',
+    loadComponent: () => import('./pages/onboarding/onboarding.component').then(m => m.OnboardingComponent)
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent)
+  },
+  {
+    path: 'chat',
+    loadComponent: () => import('./pages/chat/chat.component').then(m => m.ChatComponent)
+  },
+  {
+    path: 'stress',
+    loadComponent: () => import('./pages/stress/stress.component').then(m => m.StressComponent)
+  },
+  {
+    path: 'badges',
+    loadComponent: () => import('./pages/badges/badges.component').then(m => m.BadgesComponent)
+  },
+  {
+    path: 'learn',
+    // The parent component/shell is also lazy-loaded
+    loadComponent: () => import('./pages/learn/learn.component').then(m => m.LearnComponent),
+    children: [
+      {
+        path: '', // Renders when the URL is '/learn'
+        // The child list component is lazy-loaded
+        loadComponent: () => import('./pages/learn/lesson-list/lesson-list.component').then(m => m.LessonListComponent),
+      },
+      {
+        path: ':id', // Renders when the URL is '/learn/some-id'
+        // The child detail component is lazy-loaded
+        loadComponent: () => import('./pages/learn/lesson-detail/lesson-detail.component').then(m => m.LessonDetailComponent),
+      },
+    ],
+  },
+  {
+    path: 'savings',
+    loadComponent: () => import('./pages/savings/savings.component').then(m => m.SavingsComponent)
+  },
+  {
+    path: 'profile',
+    loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent)
+  },
+  {
+    path: 'admin',
+    loadComponent: () => import('./pages/admin/admin.component').then(m => m.AdminComponent)
+  },
+  // Wildcard route should always be last
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
+  }
 ];

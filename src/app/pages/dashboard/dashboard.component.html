@@ -1,43 +1,59 @@
-<header class="lp-header">
-  <img src="assets/logo.png" alt="FinPlay Logo" class="lp-logo"/>
-  <select id="ui-language" class="lp-language" aria-label="Select Language">
-    <option value="en">English</option>
-    <option value="hi">हिंदी</option>
-    <option value="mr">मराठी</option>
-  </select>
-</header>
-<main class="lp-main dashboard-page">
-  <h1 class="lp-title">Welcome back, <span id="user-name">[User]</span>!</h1>
+<!-- We add a check to ensure the component only renders when data is ready -->
+<main class="lp-main dashboard-page" *ngIf="summary">
+  <h1 class="lp-title">
+    <span>{{ 'dashboard.welcome' | translate }}</span>
+    <span id="user-name">{{ summary.userName }}</span>!
+  </h1>
+
+  <!-- A more semantic and grid-friendly structure for the summary -->
   <div class="dashboard-summary">
-    <div>
-      <strong>Today's Goal:</strong> <span id="goal-amount">₹0</span>
+    <div class="stat-card goal-card">
+      <span class="stat-card__label">{{ 'dashboard.summary.goal' | translate }}</span>
+      <span class="stat-card__value">₹{{ summary.dailyGoal }}</span>
     </div>
-    <div>
-      <strong>XP:</strong> <span id="xp-bar">[XP Bar]</span>
-      <strong>Level:</strong> <span id="user-level">1</span>
-      <strong>Streak:</strong> <span id="user-streak">0 days</span>
+
+    <div class="stat-card">
+      <span class="stat-card__label">{{ 'dashboard.summary.level' | translate }}</span>
+      <span class="stat-card__value">{{ summary.level }}</span>
     </div>
-    <div>
-      <strong>Badges:</strong> <span id="user-badges">[Badge Gallery]</span>
+
+    <div class="stat-card">
+      <span class="stat-card__label">{{ 'dashboard.summary.streak' | translate }}</span>
+      <span class="stat-card__value">{{ summary.streak }} days</span>
+    </div>
+
+    <div class="stat-card badges-card">
+      <span class="stat-card__label">{{ 'dashboard.summary.badges' | translate }}</span>
+      <div class="stat-card__value badge-icons">
+        <span *ngFor="let badge of summary.badges">{{ badge }}</span>
+      </div>
+    </div>
+
+    <div class="stat-card xp-card">
+      <span class="stat-card__label">{{ 'dashboard.summary.xp' | translate }}</span>
+      <div class="xp-bar-container">
+        <progress class="xp-bar" [value]="summary.xp" [max]="summary.xpMax"></progress>
+        <span class="xp-text">{{ summary.xp }} / {{ summary.xpMax }}</span>
+      </div>
     </div>
   </div>
+
   <nav class="dashboard-nav">
-    <a [routerLink]="['/chat']" class="lp-btn">💬 Chat</a>
-    <a [routerLink]="['/stress']" class="lp-btn">🧘 Stress Relief</a>
-    <a [routerLink]="['/savings']" class="lp-btn">💰 Savings Tracker</a>
-    <a [routerLink]="['/learn']" class="lp-btn">📚 Learn</a>
-    <a [routerLink]="['/badges']" class="lp-btn">🏅 Badges</a>
-    <a [routerLink]="['/profile']" class="lp-btn">👤 Profile</a>
+    <a [routerLink]="['/chat']" class="lp-btn">{{ 'dashboard.nav.chat' | translate }}</a>
+    <a [routerLink]="['/stress']" class="lp-btn">{{ 'dashboard.nav.stress' | translate }}</a>
+    <a [routerLink]="['/savings']" class="lp-btn">{{ 'dashboard.nav.savings' | translate }}</a>
+    <a [routerLink]="['/learn']" class="lp-btn">{{ 'dashboard.nav.learn' | translate }}</a>
+    <a [routerLink]="['/badges']" class="lp-btn">{{ 'dashboard.nav.badges' | translate }}</a>
+    <a [routerLink]="['/profile']" class="lp-btn">{{ 'dashboard.nav.profile' | translate }}</a>
   </nav>
-  <div class="dashboard-notifications" id="dashboard-notifications">
-    <span>[AI Nudge Placeholder]</span>
+
+  <div class="dashboard-notifications">
+    <span>{{ summary.aiNudge }}</span>
   </div>
-  <div style="width:100%;max-width:600px;margin:2rem auto;">
+
+  <div class="dashboard-widgets-container">
     <div id="dashboard-widgets">
       [Charts/Progress Placeholder]
     </div>
   </div>
 </main>
-<footer class="lp-footer">
-  <small>&copy; 2025 FinPlay</small>
-</footer>

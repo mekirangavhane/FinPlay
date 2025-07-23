@@ -1,23 +1,24 @@
-<header class="lp-header">
-  <img src="assets/logo.png" alt="FinPlay Logo" class="lp-logo"/>
-  <select id="ui-language" class="lp-language" aria-label="Select Language">
-    <option value="en">English</option>
-    <option value="hi">हिंदी</option>
-    <option value="mr">मराठी</option>
-  </select>
-</header>
-<main class="lp-main">
-  <h1 class="lp-title">Stress Relief</h1>
+<main class="lp-main stress-page">
+  <h1 class="lp-title">{{ 'stress.title' | translate }}</h1>
+
+  <!-- The buttons are now generated dynamically from our component data -->
   <div class="stress-modules">
-    <button class="lp-btn">Scam Recovery</button>
-    <button class="lp-btn">Overspending</button>
-    <button class="lp-btn">EMI Regret</button>
+    <button
+      *ngFor="let module of modules"
+      class="lp-btn"
+      [class.active]="selectedModule?.id === module.id"
+      (click)="selectModule(module)">
+      {{ module.titleKey | translate }}
+    </button>
   </div>
+
+  <!-- The content area now shows a message or the selected module's content -->
   <div class="stress-content">
-    <!-- Dynamic content based on module selection -->
-    [Stress Module Content Placeholder]
+    <div *ngIf="!selectedModule" class="content-placeholder">
+      {{ 'stress.content.initial' | translate }}
+    </div>
+    <div *ngIf="selectedModule" class="content-body">
+      {{ selectedModule.contentKey | translate }}
+    </div>
   </div>
 </main>
-<footer class="lp-footer">
-  <small>&copy; 2025 FinPlay</small>
-</footer>

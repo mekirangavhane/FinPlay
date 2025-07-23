@@ -1,0 +1,134 @@
+{
+  "common": {
+    "saveButton": "Save",
+    "addButton": "Add",
+    "selectOption": "Select",
+    "previousButton": "Previous",
+    "nextButton": "Next",
+    "finishButton": "Finish"
+  },
+  "header": {
+    "languageSelectorLabel": "Select Language"
+  },
+  "landing": {
+    "title": "Welcome to FinPlay",
+    "subtitle": "Your voice-first, AI-powered financial coach for real-life decisions",
+    "intro": "Play through real scenarios, get instant feedback, and build financial confidence—no reading required.",
+    "demoLink": "🎬 Watch Demo",
+    "startTalkingButton": "🎤 Start Talking",
+    "guestButton": "Continue as Guest",
+    "loginButton": "Log In",
+    "howItWorks": {
+      "summary": "How does FinPlay work?",
+      "item1": "Speak or chat in your language",
+      "item2": "Simulate real-life money choices",
+      "item3": "Earn XP & badges for smart decisions",
+      "item4": "Track savings and progress daily"
+    }
+  },
+  "onboarding": {
+    "ageLabel": "Age:",
+    "earningTypeLabel": "Earning Type:",
+    "role": {
+      "dailyWage": "Daily Wage",
+      "salaried": "Salaried",
+      "freelancer": "Freelancer",
+      "student": "Student"
+    },
+    "goalLabel": "Financial Goal:",
+    "goal": {
+      "save10": "Save ₹10/day",
+      "avoidDebt": "Avoid Debt",
+      "buildCredit": "Build Credit"
+    },
+    "languageLabel": "Preferred Language:",
+    "confidenceLabel": "Digital Confidence:",
+    "confidence": {
+      "basic": "Basic",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome back, ",
+    "summary": {
+      "goal": "Today's Goal:",
+      "xp": "XP:",
+      "level": "Level:",
+      "streak": "Streak:",
+      "badges": "Badges:"
+    },
+    "nav": {
+      "chat": "💬 Chat",
+      "stress": "🧘 Stress Relief",
+      "savings": "💰 Savings Tracker",
+      "learn": "📚 Learn",
+      "badges": "🏅 Badges",
+      "profile": "👤 Profile"
+    }
+  },
+  "chat": {
+    "title": "Talk to FinPlay",
+    "inputPlaceholder": "Type or speak...",
+    "actions": {
+      "save": "Save Tip",
+      "report": "Report",
+      "repeat": "Repeat"
+    }
+  },
+  "profile": {
+    "title": "Profile & Settings",
+    "form": {
+      "nameLabel": "Name:",
+      "ageLabel": "Age:",
+      "goalLabel": "Goal:",
+      "voiceToneLabel": "Voice Tone:",
+      "voiceTone": {
+        "friendly": "Friendly",
+        "elder": "Elder",
+        "youth": "Youth"
+      },
+      "accessibilityLabel": "Accessibility:",
+      "accessibility": {
+        "default": "Default",
+        "largeText": "Large Text",
+        "highContrast": "High Contrast"
+      },
+      "restartButton": "Restart Journey",
+      "optOutButton": "Opt Out"
+    }
+  },
+  "savings": {
+    "title": "Savings Tracker",
+    "form": {
+      "goalLabel": "Savings Goal:",
+      "addLabel": "Add Savings:"
+    }
+  },
+  "stress": {
+    "title": "Stress Relief",
+    "button": {
+      "scamRecovery": "Scam Recovery",
+      "overspending": "Overspending",
+      "emiRegret": "EMI Regret"
+    }
+  },
+  "badges": {
+    "title": "Your Badges",
+    "xpLabel": "XP:",
+    "levelLabel": "Level:",
+    "challengeButton": "Complete Today's Challenge"
+  },
+  "learn": {
+    "title": "Learn & Grow"
+  },
+  "admin": {
+    "title": "Admin Tools",
+    "button": {
+      "viewLogs": "View Conversation Logs",
+      "triggerRewards": "Trigger XP/Badges",
+      "resetUser": "Reset User State",
+      "resetScenarios": "Reset Scenarios"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+// Using :host allows you to style the component's host element and define
+// CSS variables that are scoped to this component and its children.
+:host {
+  // Define variables for easy theming and maintenance
+  --header-height: 60px;
+  --header-padding: 0 2rem;
+  --border-color: #e0e0e0;
+  --primary-color: #4a90e2; // Example primary color
+}
+
+.lp-header {
+  display: flex;
+  justify-content: space-between; // Pushes logo to the left and select to the right
+  align-items: center;           // Vertically aligns items in the middle
+  height: var(--header-height);
+  padding: var(--header-padding);
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); // Adds a subtle shadow for depth
+}
+
+.lp-logo {
+  // Make the logo scale relative to the header's height
+  height: calc(var(--header-height) * 0.6);
+  width: auto; // Maintain aspect ratio
+}
+
+.lp-language {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+
+  // Add a hover effect for better user feedback
+  &:hover {
+    border-color: var(--primary-color);
+  }
+
+  // Improve accessibility with a clear focus state
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+// --- Responsive Design ---
+// Adjust styles for smaller screens like mobile phones.
+@media (max-width: 600px) {
+  .lp-header {
+    // Reduce padding on smaller screens to save space
+    padding: 0 1rem;
+  }
+
+  .lp-language {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}

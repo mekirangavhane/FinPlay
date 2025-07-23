@@ -1,25 +1,48 @@
-<header class="lp-header">
-  <img src="assets/logo.png" alt="FinPlay Logo" class="lp-logo"/>
-  <select id="ui-language" class="lp-language" aria-label="Select Language">
-    <option value="en">English</option>
-    <option value="hi">हिंदी</option>
-    <option value="mr">मराठी</option>
-  </select>
-</header>
-<main class="lp-main">
-  <h1 class="lp-title">Your Badges</h1>
-  <div class="badge-gallery">
-    <!-- Badge icons and names -->
-    [Badge Gallery Placeholder]
+<!-- Render the page only when pageData is available -->
+<main class="lp-main badges-page" *ngIf="pageData">
+  <h1 class="lp-title">{{ 'badges.title' | translate }}</h1>
+
+  <!-- XP and Level Meter -->
+  <div class="progress-summary">
+    <div class="level-indicator">
+      <span class="label">{{ 'badges.levelLabel' | translate }}</span>
+      <span class="value">{{ pageData.level }}</span>
+    </div>
+    <div class="xp-meter">
+      <span class="label">{{ 'badges.xpLabel' | translate }}</span>
+      <div class="xp-bar-container">
+        <progress class="xp-bar" [value]="pageData.xp" [max]="pageData.xpMax"></progress>
+        <span class="xp-text">{{ pageData.xp }} / {{ pageData.xpMax }}</span>
+      </div>
+    </div>
   </div>
-  <div class="xp-meter">
-    XP: <progress value="50" max="100"></progress> Level: 2
+
+  <!-- Section for Earned Badges -->
+  <section class="badge-section">
+    <h2>Your Collection</h2>
+    <div class="badge-gallery">
+      <div class="badge-card" *ngFor="let badge of earnedBadges">
+        <span class="badge-icon">{{ badge.icon }}</span>
+        <span class="badge-name">{{ badge.name }}</span>
+        <span class="badge-description">{{ badge.description }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section for Unearned Badges -->
+  <section class="badge-section">
+    <h2>Badges to Unlock</h2>
+    <div class="badge-gallery">
+      <div class="badge-card locked" *ngFor="let badge of unearnedBadges">
+        <span class="badge-icon">?</span>
+        <span class="badge-name">{{ badge.name }}</span>
+        <span class="badge-description">{{ badge.description }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <div class="cta-container">
+    <button class="lp-btn">{{ 'badges.challengeButton' | translate }}</button>
   </div>
-  <div class="streak-calendar">
-    [Streak Calendar Placeholder]
-  </div>
-  <button class="lp-btn">Complete Today's Challenge</button>
 </main>
-<footer class="lp-footer">
-  <small>&copy; 2025 FinPlay</small>
-</footer>

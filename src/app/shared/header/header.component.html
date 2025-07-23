@@ -1,0 +1,13 @@
+<header class="lp-header">
+  <img src="assets/images/logo.svg" alt="FinPlay Logo" class="lp-logo"/>
+
+  <!-- The select element is now managed entirely by our directive -->
+  <select id="ui-language"
+          class="lp-language"
+          appLanguageSelector
+          [attr.aria-label]="'header.languageSelectorLabel' | translate">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="mr">मराठी</option>
+  </select>
+</header>

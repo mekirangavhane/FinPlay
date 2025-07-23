@@ -1,0 +1,51 @@
+<div class="quiz-container">
+  <!-- Quiz In-Progress View -->
+  <div *ngIf="!isQuizFinished; else resultsTemplate">
+    <div class="quiz-header">
+      <h3 class="question-text">{{ currentQuestion.questionText }}</h3>
+      <span class="question-counter">
+        Question {{ currentQuestionIndex + 1 }} of {{ quizData.questions.length }}
+      </span>
+    </div>
+
+    <div class="options-grid">
+      <button
+        *ngFor="let option of currentQuestion.options; let i = index"
+        class="option-btn"
+        (click)="selectOption(i)"
+        [disabled]="isAnswered"
+        [ngClass]="{
+          'selected': i === selectedOptionIndex,
+          'correct': isAnswered && option.correct,
+          'incorrect': isAnswered && !option.correct && i === selectedOptionIndex
+        }"
+      >
+        {{ option.text }}
+      </button>
+    </div>
+
+    <div class="quiz-footer">
+      <div class="explanation" *ngIf="isAnswered">
+        <p>{{ currentQuestion.explanation }}</p>
+      </div>
+
+      <button *ngIf="!isAnswered" class="lp-btn" (click)="submitAnswer()" [disabled]="selectedOptionIndex === null">
+        Submit
+      </button>
+      <button *ngIf="isAnswered" class="lp-btn" (click)="nextQuestion()">
+        Next
+      </button>
+    </div>
+  </div>
+
+  <!-- Quiz Results View -->
+  <ng-template #resultsTemplate>
+    <div class="results-container">
+      <h2 class="results-title">Quiz Complete!</h2>
+      <p class="results-score">
+        You scored <span>{{ score }}</span> out of <span>{{ quizData.questions.length }}</span>
+      </p>
+      <button class="lp-btn" (click)="restartQuiz()">Try Again</button>
+    </div>
+  </ng-template>
+</div>

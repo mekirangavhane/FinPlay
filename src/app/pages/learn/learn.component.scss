@@ -1,7 +1,15 @@
-.lessons-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 500px;
-  margin: 2rem auto;
+.learn-page {
+  // This max-width now applies to both the list and detail views
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+
+// Responsive adjustment for the main container
+@media (max-width: 900px) {
+  .learn-page {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }

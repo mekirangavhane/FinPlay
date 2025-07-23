@@ -1,0 +1,21 @@
+<div class="lessons-list">
+  <!-- The link is now relative to the parent '/learn' route -->
+  <a *ngFor="let item of learnItems" [routerLink]="[item.id]" class="lesson-card-link">
+    <div class="lesson-card" [class.completed]="item.completed">
+      <div class="lesson-icon">{{ item.icon }}</div>
+      <div class="lesson-details">
+        <span class="lesson-type">{{ item.type }}</span>
+        <h3 class="lesson-title">{{ item.titleKey | translate }}</h3>
+        <p class="lesson-description">
+          {{ item.descriptionKey | translate }}
+        </p>
+      </div>
+      <div class="lesson-action">
+        <button class="lp-btn">
+          <span *ngIf="!item.completed">{{ 'common.startButton' | translate }}</span>
+          <span *ngIf="item.completed">{{ 'common.reviewButton' | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </a>
+</div>

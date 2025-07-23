@@ -1,27 +1,37 @@
-<header class="lp-header">
-  <img src="assets/logo.png" alt="FinPlay Logo" class="lp-logo"/>
-  <select id="ui-language" class="lp-language" aria-label="Select Language">
-    <option value="en">English</option>
-    <option value="hi">हिंदी</option>
-    <option value="mr">मराठी</option>
-  </select>
-</header>
-<main class="lp-main">
-  <h1 class="lp-title">Savings Tracker</h1>
-  <form class="savings-form">
-    <label for="goal-amount">Savings Goal:</label>
-    <input type="number" id="goal-amount" name="goal-amount" min="0"/>
-    <label for="add-savings">Add Savings:</label>
-    <input type="number" id="add-savings" name="add-savings" min="0"/>
-    <button class="lp-btn" type="submit">Add</button>
+<main class="lp-main savings-page">
+  <h1 class="lp-title">{{ 'savings.title' | translate }}</h1>
+
+  <!-- The form is now interactive -->
+  <form class="savings-form" (ngSubmit)="addSavings()">
+    <div class="form-group">
+      <label for="goal-amount">{{ 'savings.form.goalLabel' | translate }}</label>
+      <input type="number" id="goal-amount" name="goal-amount" min="0" [(ngModel)]="savings.goal"/>
+    </div>
+    <div class="form-group">
+      <label for="add-savings">{{ 'savings.form.addLabel' | translate }}</label>
+      <input type="number" id="add-savings" name="add-savings" min="0" [(ngModel)]="amountToAdd" [placeholder]="'₹'"/>
+    </div>
+    <div class="form-actions">
+      <button class="lp-btn" type="submit" [disabled]="!amountToAdd || amountToAdd <= 0">
+        {{ 'common.addButton' | translate }}
+      </button>
+    </div>
   </form>
+
+  <!-- The progress section is now a dynamic component -->
   <div class="savings-progress">
-    [Progress Chart Placeholder]
+    <div class="progress-text">
+      <span class="current">₹{{ savings.currentAmount | number }}</span>
+      <span class="goal"> of ₹{{ savings.goal | number }}</span>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" [style.width.%]="progressPercentage"></div>
+    </div>
   </div>
+
+  <!-- The suggestions are now dynamic -->
   <div class="savings-suggestions">
-    [Smart Suggestions Placeholder]
+    <span class="suggestion-icon">💡</span>
+    <p>{{ suggestion }}</p>
   </div>
 </main>
-<footer class="lp-footer">
-  <small>&copy; 2025 FinPlay</small>
-</footer>

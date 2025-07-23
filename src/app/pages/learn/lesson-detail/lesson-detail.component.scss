@@ -1,0 +1,290 @@
+:host {
+  --sidebar-bg: #1e293b;
+  --sidebar-text: #cbd5e1;
+  --sidebar-text-hover: #ffffff;
+  --sidebar-active-bg: #334155;
+  --content-bg: #f8fafc;
+  --primary-accent: #7c3aed;
+  --completed-color: #22c55e;
+  --border-color: #475569; // Darkened for better contrast
+  --header-text-color: #94a3b8;
+}
+
+.lesson-container {
+  display: flex;
+  height: calc(100vh - 150px);
+  background-color: var(--content-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+// --- Sidebar (Right Column) ---
+.lesson-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  // FIX: Prevent layout shift when scrollbar appears.
+  scrollbar-gutter: stable;
+}
+
+.sidebar-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.progress-container {
+  margin-bottom: 1.5rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  .progress-text {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .xp-earned {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--completed-color);
+  }
+}
+
+.progress-bar-wrapper {
+  width: 100%;
+  height: 6px;
+  background-color: var(--border-color);
+  border-radius: 3px;
+}
+.progress-bar {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: width 0.4s ease-out;
+}
+
+.section-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Styling for the subsection container to create indentation
+.subsection-container {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--border-color);
+  margin-left: 8px; // Aligns the border with the status icon
+}
+
+.section-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--sidebar-active-bg);
+    color: var(--sidebar-text-hover);
+  }
+
+  &.active {
+    background-color: var(--sidebar-active-bg);
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+// Styling for non-clickable headers
+li.type-header .section-item {
+  cursor: pointer; // It's now clickable to toggle
+  margin-top: 1rem;
+  &:hover {
+    background-color: var(--sidebar-active-bg); // Allow hover for headers
+  }
+  .section-title {
+    color: var(--header-text-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+// Styling for the collapsible chevron
+.section-chevron {
+  font-size: 1rem;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+  color: var(--header-text-color);
+  i {
+    display: inline-block;
+    font-style: normal;
+    transition: transform 0.2s ease-in-out;
+    &.expanded {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.section-status-icon {
+  font-size: 0.8rem;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+  i {
+    font-style: normal;
+  }
+}
+
+.section-item.active .section-status-icon {
+  color: #fff;
+}
+
+.section-item:not(.active) .section-status-icon {
+  color: var(--completed-color);
+}
+
+.section-title {
+  flex-grow: 1; // Allows points to align to the right
+}
+
+// FIX: Standardize the width of the XP badges.
+.section-points {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sidebar-text);
+  background-color: var(--border-color);
+  padding: 2px 6px;
+  border-radius: 4px;
+  // Additions for consistency:
+  min-width: 45px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+// FIX: Align the total XP text with the badges above.
+.section-total-xp {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--header-text-color);
+  // Additions for consistency:
+  min-width: 45px;
+  text-align: right;
+  padding-right: 6px; // Visually align with the padding of the badge
+  flex-shrink: 0;
+}
+
+// --- Main Content (Left Column) ---
+.lesson-content {
+  flex-grow: 1;
+  padding: 3rem;
+  overflow-y: auto;
+}
+
+.content-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 2rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 1rem;
+}
+
+.video-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  .play-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.text-content {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #374151;
+
+  // ADDED: Styles for rich HTML content rendered by [innerHTML]
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #111827;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #111827;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    margin-bottom: 1.25rem;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--primary-accent);
+  }
+}
+
+.quiz-content {
+  // This class is now just a container, the quiz component has its own styles.
+}
+
+// --- Responsive Design ---
+@media (max-width: 900px) {
+  .lesson-container {
+    flex-direction: column;
+    height: auto;
+    border: none;
+    border-radius: 0;
+  }
+  .lesson-sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 40vh; // Limit height on mobile
+    border-radius: 0;
+  }
+  .lesson-content {
+    padding: 1.5rem;
+  }
+}

@@ -1,64 +1,70 @@
-<header class="ob-header">
-  <button class="ob-back" aria-label="Back" type="button" [disabled]="current === 0" (click)="prevStep()">&larr; Back</button>
-  <h2>Tell us about you</h2>
-  <select #headerLang id="ui-language" class="lp-language" aria-label="Select Language"
-    [(ngModel)]="uiLanguage"
-    (change)="onUiLanguageChange(headerLang.value)">
-    <option value="en">English</option>
-    <option value="hi">हिंदी</option>
-    <option value="mr">मराठी</option>
-  </select>
-</header>
 <main class="ob-main">
   <form #personaForm="ngForm" id="persona-form" class="ob-form" autocomplete="off" (ngSubmit)="nextStep()">
     <!-- Step 1: Age & Role -->
     <div class="ob-step" [class.active]="current === 0">
-      <label for="age">Age:</label>
+      <label for="age">{{ 'onboarding.ageLabel' | translate }}</label>
       <input type="number" id="age" name="age" min="10" max="100" required [(ngModel)]="form.age"/>
-      <label for="role">Earning Type:</label>
+
+      <label for="role">{{ 'onboarding.earningTypeLabel' | translate }}</label>
       <select id="role" name="role" required [(ngModel)]="form.role">
-        <option value="">Select</option>
-        <option value="day-labor">Daily Wage</option>
-        <option value="salaried">Salaried</option>
-        <option value="freelancer">Freelancer</option>
-        <option value="student">Student</option>
+        <option value="" disabled>{{ 'common.selectOption' | translate }}</option>
+        <option value="day-labor">{{ 'onboarding.role.dailyWage' | translate }}</option>
+        <option value="salaried">{{ 'onboarding.role.salaried' | translate }}</option>
+        <option value="freelancer">{{ 'onboarding.role.freelancer' | translate }}</option>
+        <option value="student">{{ 'onboarding.role.student' | translate }}</option>
       </select>
     </div>
+
     <!-- Step 2: Goal -->
     <div class="ob-step" [class.active]="current === 1">
-      <label for="goal">Financial Goal:</label>
+      <label for="goal">{{ 'onboarding.goalLabel' | translate }}</label>
       <select id="goal" name="goal" required [(ngModel)]="form.goal">
-        <option value="">Select</option>
-        <option value="save-10">Save ₹10/day</option>
-        <option value="avoid-debt">Avoid Debt</option>
-        <option value="build-credit">Build Credit</option>
+        <option value="" disabled>{{ 'common.selectOption' | translate }}</option>
+        <option value="save-10">{{ 'onboarding.goal.save10' | translate }}</option>
+        <option value="avoid-debt">{{ 'onboarding.goal.avoidDebt' | translate }}</option>
+        <option value="build-credit">{{ 'onboarding.goal.buildCredit' | translate }}</option>
       </select>
     </div>
+
     <!-- Step 3: Language & Confidence -->
     <div class="ob-step" [class.active]="current === 2">
-      <label for="form-language">Preferred Language:</label>
-      <select #stepLang id="form-language" class="lp-language" aria-label="Select Language"
+      <label for="form-language">{{ 'onboarding.languageLabel' | translate }}</label>
+      <!--
+        - The (change) event and #stepLang are removed.
+        - The appLanguageSelector directive now handles all the logic.
+        - We still use [(ngModel)] to bind the value to our component's form data.
+      -->
+      <select
+        id="form-language"
+        name="language"
+        class="lp-language"
+        appLanguageSelector
         [(ngModel)]="form.language"
-        (change)="onFormLanguageChange(stepLang.value)">
+        [attr.aria-label]="'header.languageSelectorLabel' | translate">
         <option value="en">English</option>
         <option value="hi">हिंदी</option>
         <option value="mr">मराठी</option>
       </select>
-      <label for="confidence">Digital Confidence:</label>
+
+      <label for="confidence">{{ 'onboarding.confidenceLabel' | translate }}</label>
       <select id="confidence" name="confidence" required [(ngModel)]="form.confidence">
-        <option value="">Select</option>
-        <option>Basic</option>
-        <option>Intermediate</option>
-        <option>Advanced</option>
+        <option value="" disabled>{{ 'common.selectOption' | translate }}</option>
+        <option value="basic">{{ 'onboarding.confidence.basic' | translate }}</option>
+        <option value="intermediate">{{ 'onboarding.confidence.intermediate' | translate }}</option>
+        <option value="advanced">{{ 'onboarding.confidence.advanced' | translate }}</option>
       </select>
     </div>
+
     <!-- Step controls -->
     <div class="ob-controls">
-      <button type="button" id="prev-step" [disabled]="current === 0" (click)="prevStep()">Previous</button>
+      <button type="button" id="prev-step" [disabled]="current === 0" (click)="prevStep()">{{ 'common.previousButton' | translate }}</button>
       <button type="button" id="next-step" (click)="nextStep()">
-        {{ current === steps.length - 1 ? 'Finish' : 'Next' }}
+        <span *ngIf="current !== steps.length - 1">{{ 'common.nextButton' | translate }}</span>
+        <!-- The final button is disabled if any required field in the form is invalid -->
+        <span *ngIf="current === steps.length - 1" [class.disabled]="personaForm.invalid">{{ 'common.finishButton' | translate }}</span>
       </button>
     </div>
   </form>
+
   <div class="ob-progress"><span id="step-indicator">{{ stepIndicator }}</span></div>
 </main>

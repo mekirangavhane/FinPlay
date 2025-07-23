@@ -1,0 +1,87 @@
+<!-- Only render if the lesson data has been loaded -->
+<div class="lesson-container" *ngIf="lesson">
+  <!-- Right Column: The Lesson Navigator/Sidebar -->
+  <aside class="lesson-sidebar">
+    <h2 class="sidebar-title">{{ lesson.title }}</h2>
+
+    <div class="progress-container">
+      <div class="progress-header">
+        <span class="progress-text">{{ lessonProgress | number: '1.0-0' }}% Complete</span>
+        <span class="xp-earned">{{ totalXpEarned }} XP Earned</span>
+      </div>
+      <div class="progress-bar-wrapper">
+        <div class="progress-bar" [style.width.%]="lessonProgress"></div>
+      </div>
+    </div>
+
+    <!-- Start of the recursive list -->
+    <ng-container *ngTemplateOutlet="sectionTemplate; context: { sections: lesson.sections }"></ng-container>
+  </aside>
+
+  <!-- Left Column: The Main Content Area -->
+  <main class="lesson-content">
+    <div *ngIf="activeSection">
+      <h1 class="content-title">{{ activeSection.title }}</h1>
+
+      <!-- Display content based on its type -->
+      <div [ngSwitch]="activeSection.type">
+        <div *ngSwitchCase="'video'" class="video-placeholder">
+          <i class="play-icon">▶</i>
+          <span>Video content would appear here.</span>
+        </div>
+
+        <!-- Use [innerHTML] to render rich text from your component's data -->
+        <div *ngSwitchCase="'text'" class="text-content" [innerHTML]="activeSection.content"></div>
+
+        <!-- Render the app-quiz component for quiz sections -->
+        <div *ngSwitchCase="'quiz'" class="quiz-content">
+          <!-- UPDATED: Use the type guard to safely render the component -->
+          <app-quiz *ngIf="isQuiz(activeSection.content)" [quizData]="activeSection.content"></app-quiz>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- RECURSIVE TEMPLATE for rendering the section list -->
+<ng-template #sectionTemplate let-sections="sections">
+  <ul class="section-list">
+    <li *ngFor="let section of sections" [ngClass]="'type-' + section.type">
+      <div
+        class="section-item"
+        [class.active]="section.id === activeSection?.id"
+        (click)="section.type === 'header' ? toggleSection(section) : selectSection(section)"
+      >
+        <!-- Add chevron for headers -->
+        <span class="section-chevron" *ngIf="section.type === 'header'">
+          <i [class.expanded]="section.isExpanded">›</i>
+        </span>
+
+        <span class="section-status-icon" *ngIf="section.type !== 'header'">
+          <i *ngIf="section.completed">✓</i>
+          <i *ngIf="!section.completed">●</i>
+        </span>
+
+        <span class="section-title">{{ section.title }}</span>
+
+        <!-- Show individual or total XP -->
+        <span class="section-points" *ngIf="section.type !== 'header' && section.points > 0"
+        >+{{ section.points }} XP</span
+        >
+        <span class="section-total-xp" *ngIf="section.type === 'header'">{{
+            getSectionTotalXp(section)
+          }} XP</span>
+      </div>
+
+      <!-- Conditionally render subsections based on isExpanded -->
+      <div
+        *ngIf="section.isExpanded && section.subsections && section.subsections.length > 0"
+        class="subsection-container"
+      >
+        <ng-container
+          *ngTemplateOutlet="sectionTemplate; context: { sections: section.subsections }"
+        ></ng-container>
+      </div>
+    </li>
+  </ul>
+</ng-template>

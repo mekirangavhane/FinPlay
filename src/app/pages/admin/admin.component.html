@@ -1,20 +1,9 @@
-<header class="lp-header">
-  <img src="assets/logo.png" alt="FinPlay Logo" class="lp-logo"/>
-  <select id="ui-language" class="lp-language" aria-label="Select Language">
-    <option value="en">English</option>
-    <option value="hi">हिंदी</option>
-    <option value="mr">मराठी</option>
-  </select>
-</header>
 <main class="lp-main">
-  <h1 class="lp-title">Admin Tools</h1>
+  <h1 class="lp-title">{{ 'admin.title' | translate }}</h1>
   <div class="admin-tools">
-    <button class="lp-btn">View Conversation Logs</button>
-    <button class="lp-btn">Trigger XP/Badges</button>
-    <button class="lp-btn">Reset User State</button>
-    <button class="lp-btn">Reset Scenarios</button>
+    <button class="lp-btn">{{ 'admin.button.viewLogs' | translate }}</button>
+    <button class="lp-btn">{{ 'admin.button.triggerRewards' | translate }}</button>
+    <button class="lp-btn">{{ 'admin.button.resetUser' | translate }}</button>
+    <button class="lp-btn">{{ 'admin.button.resetScenarios' | translate }}</button>
   </div>
 </main>
-<footer class="lp-footer">
-  <small>&copy; 2025 FinPlay</small>
-</footer>
