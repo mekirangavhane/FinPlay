@@ -1,0 +1,43 @@
+<header class="lp-header">
+  <img src="assets/logo.png" alt="FinPlay Logo" class="lp-logo"/>
+  <select id="ui-language" class="lp-language" aria-label="Select Language">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="mr">मराठी</option>
+  </select>
+</header>
+<main class="lp-main">
+  <h1 class="lp-title">Profile & Settings</h1>
+  <form class="profile-form">
+    <label for="profile-name">Name:</label>
+    <input type="text" id="profile-name" name="profile-name"/>
+    <label for="profile-age">Age:</label>
+    <input type="number" id="profile-age" name="profile-age" min="10" max="100"/>
+    <label for="profile-goal">Goal:</label>
+    <input type="text" id="profile-goal" name="profile-goal"/>
+    <label for="profile-language">Language:</label>
+    <select id="profile-language" name="profile-language">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="mr">मराठी</option>
+    </select>
+    <label for="profile-voice">Voice Tone:</label>
+    <select id="profile-voice" name="profile-voice">
+      <option>Friendly</option>
+      <option>Elder</option>
+      <option>Youth</option>
+    </select>
+    <label for="profile-accessibility">Accessibility:</label>
+    <select id="profile-accessibility" name="profile-accessibility">
+      <option>Default</option>
+      <option>Large Text</option>
+      <option>High Contrast</option>
+    </select>
+    <button class="lp-btn" type="submit">Save</button>
+    <button class="lp-btn" type="button">Restart Journey</button>
+    <button class="lp-btn" type="button">Opt Out</button>
+  </form>
+</main>
+<footer class="lp-footer">
+  <small>&copy; 2025 FinPlay</small>
+</footer>

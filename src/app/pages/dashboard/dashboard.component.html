@@ -1,0 +1,43 @@
+<header class="lp-header">
+  <img src="assets/logo.png" alt="FinPlay Logo" class="lp-logo"/>
+  <select id="ui-language" class="lp-language" aria-label="Select Language">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="mr">मराठी</option>
+  </select>
+</header>
+<main class="lp-main dashboard-page">
+  <h1 class="lp-title">Welcome back, <span id="user-name">[User]</span>!</h1>
+  <div class="dashboard-summary">
+    <div>
+      <strong>Today's Goal:</strong> <span id="goal-amount">₹0</span>
+    </div>
+    <div>
+      <strong>XP:</strong> <span id="xp-bar">[XP Bar]</span>
+      <strong>Level:</strong> <span id="user-level">1</span>
+      <strong>Streak:</strong> <span id="user-streak">0 days</span>
+    </div>
+    <div>
+      <strong>Badges:</strong> <span id="user-badges">[Badge Gallery]</span>
+    </div>
+  </div>
+  <nav class="dashboard-nav">
+    <a [routerLink]="['/chat']" class="lp-btn">💬 Chat</a>
+    <a [routerLink]="['/stress']" class="lp-btn">🧘 Stress Relief</a>
+    <a [routerLink]="['/savings']" class="lp-btn">💰 Savings Tracker</a>
+    <a [routerLink]="['/learn']" class="lp-btn">📚 Learn</a>
+    <a [routerLink]="['/badges']" class="lp-btn">🏅 Badges</a>
+    <a [routerLink]="['/profile']" class="lp-btn">👤 Profile</a>
+  </nav>
+  <div class="dashboard-notifications" id="dashboard-notifications">
+    <span>[AI Nudge Placeholder]</span>
+  </div>
+  <div style="width:100%;max-width:600px;margin:2rem auto;">
+    <div id="dashboard-widgets">
+      [Charts/Progress Placeholder]
+    </div>
+  </div>
+</main>
+<footer class="lp-footer">
+  <small>&copy; 2025 FinPlay</small>
+</footer>

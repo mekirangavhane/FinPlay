@@ -1,0 +1,27 @@
+<header class="lp-header">
+  <img src="assets/logo.png" alt="FinPlay Logo" class="lp-logo"/>
+  <select id="ui-language" class="lp-language" aria-label="Select Language">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="mr">मराठी</option>
+  </select>
+</header>
+<main class="lp-main">
+  <h1 class="lp-title">Savings Tracker</h1>
+  <form class="savings-form">
+    <label for="goal-amount">Savings Goal:</label>
+    <input type="number" id="goal-amount" name="goal-amount" min="0"/>
+    <label for="add-savings">Add Savings:</label>
+    <input type="number" id="add-savings" name="add-savings" min="0"/>
+    <button class="lp-btn" type="submit">Add</button>
+  </form>
+  <div class="savings-progress">
+    [Progress Chart Placeholder]
+  </div>
+  <div class="savings-suggestions">
+    [Smart Suggestions Placeholder]
+  </div>
+</main>
+<footer class="lp-footer">
+  <small>&copy; 2025 FinPlay</small>
+</footer>

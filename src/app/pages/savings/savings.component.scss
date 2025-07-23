@@ -1,0 +1,74 @@
+.savings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  background: #f8fafc;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.savings-form label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.savings-form input[type="number"] {
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.savings-form input[type="number"]:focus {
+  border-color: #2563eb;
+}
+
+.savings-form .lp-btn {
+  margin-top: 0.5rem;
+  align-self: flex-end;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.savings-form .lp-btn:hover {
+  background: #1e40af;
+}
+
+.savings-progress {
+  margin: 2rem 0;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem 1rem;
+}
+
+.savings-suggestions {
+  margin: 1rem 0;
+  text-align: center;
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .savings-form {
+    padding: 1rem 0.5rem;
+    max-width: 98vw;
+  }
+  .savings-progress,
+  .savings-suggestions {
+    padding: 1rem 0.5rem;
+  }
+}

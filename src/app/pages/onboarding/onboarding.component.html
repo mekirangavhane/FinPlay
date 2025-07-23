@@ -1,0 +1,64 @@
+<header class="ob-header">
+  <button class="ob-back" aria-label="Back" type="button" [disabled]="current === 0" (click)="prevStep()">&larr; Back</button>
+  <h2>Tell us about you</h2>
+  <select #headerLang id="ui-language" class="lp-language" aria-label="Select Language"
+    [(ngModel)]="uiLanguage"
+    (change)="onUiLanguageChange(headerLang.value)">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="mr">मराठी</option>
+  </select>
+</header>
+<main class="ob-main">
+  <form #personaForm="ngForm" id="persona-form" class="ob-form" autocomplete="off" (ngSubmit)="nextStep()">
+    <!-- Step 1: Age & Role -->
+    <div class="ob-step" [class.active]="current === 0">
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="10" max="100" required [(ngModel)]="form.age"/>
+      <label for="role">Earning Type:</label>
+      <select id="role" name="role" required [(ngModel)]="form.role">
+        <option value="">Select</option>
+        <option value="day-labor">Daily Wage</option>
+        <option value="salaried">Salaried</option>
+        <option value="freelancer">Freelancer</option>
+        <option value="student">Student</option>
+      </select>
+    </div>
+    <!-- Step 2: Goal -->
+    <div class="ob-step" [class.active]="current === 1">
+      <label for="goal">Financial Goal:</label>
+      <select id="goal" name="goal" required [(ngModel)]="form.goal">
+        <option value="">Select</option>
+        <option value="save-10">Save ₹10/day</option>
+        <option value="avoid-debt">Avoid Debt</option>
+        <option value="build-credit">Build Credit</option>
+      </select>
+    </div>
+    <!-- Step 3: Language & Confidence -->
+    <div class="ob-step" [class.active]="current === 2">
+      <label for="form-language">Preferred Language:</label>
+      <select #stepLang id="form-language" class="lp-language" aria-label="Select Language"
+        [(ngModel)]="form.language"
+        (change)="onFormLanguageChange(stepLang.value)">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+        <option value="mr">मराठी</option>
+      </select>
+      <label for="confidence">Digital Confidence:</label>
+      <select id="confidence" name="confidence" required [(ngModel)]="form.confidence">
+        <option value="">Select</option>
+        <option>Basic</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+      </select>
+    </div>
+    <!-- Step controls -->
+    <div class="ob-controls">
+      <button type="button" id="prev-step" [disabled]="current === 0" (click)="prevStep()">Previous</button>
+      <button type="button" id="next-step" (click)="nextStep()">
+        {{ current === steps.length - 1 ? 'Finish' : 'Next' }}
+      </button>
+    </div>
+  </form>
+  <div class="ob-progress"><span id="step-indicator">{{ stepIndicator }}</span></div>
+</main>

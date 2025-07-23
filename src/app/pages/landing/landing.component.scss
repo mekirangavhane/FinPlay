@@ -1,0 +1,182 @@
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.lp-header, .lp-footer {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  padding: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lp-logo {
+  height: 48px;
+  max-width: 90vw;
+}
+
+.lp-main {
+  max-width: 420px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lp-title {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+.lp-subtitle {
+  font-size: 1.1rem;
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.lp-intro p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.lp-demo-link {
+  display: inline-block;
+  margin: 0.5rem 0 1rem 0;
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.lp-btn {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: #1e40af;
+  }
+}
+
+.lp-btn-voice {
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  background: #22c55e;
+  &:hover {
+    background: #15803d;
+  }
+}
+
+.lp-btn-guest {
+  background: #fbbf24;
+  color: #1e293b;
+  &:hover {
+    background: #f59e1b;
+  }
+}
+
+.lp-btn-login {
+  background: #fff;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+  &:hover {
+    background: #e0e7ef;
+  }
+}
+
+.lp-secondary {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.lp-how {
+  width: 100%;
+}
+
+.lp-how details {
+  margin-top: 1rem;
+  font-size: 1rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.lp-how summary {
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+.lp-how ul {
+  margin: 0.5rem 0 0 1.2rem;
+  padding: 0;
+  list-style: disc;
+  color: #222;
+  font-size: 1rem;
+}
+
+.lp-language {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+}
+
+.lp-footer {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  background: #f1f5f9;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .lp-main {
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+    margin: 1rem 0.5rem;
+  }
+  .lp-title {
+    font-size: 1.4rem;
+  }
+  .lp-logo {
+    height: 36px;
+  }
+  .lp-btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+  .lp-btn-voice {
+    font-size: 1rem;
+  }
+  .lp-how details {
+    padding: 0.7rem 0.5rem 0.3rem 0.5rem;
+    font-size: 0.97rem;
+  }
+  .lp-how ul {
+    font-size: 0.97rem;
+  }
+}

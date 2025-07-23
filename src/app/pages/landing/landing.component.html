@@ -1,0 +1,35 @@
+<header class="lp-header">
+  <img src="assets/logo.png" alt="FinPlay Logo" class="lp-logo" aria-label="FinPlay Logo"/>
+  <select id="ui-language" class="lp-language" aria-label="Select Language">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="mr">मराठी</option>
+  </select>
+</header>
+<main class="lp-main">
+  <h1 class="lp-title">Welcome to FinPlay</h1>
+  <p class="lp-subtitle">Your voice-first, AI-powered financial coach for real-life decisions</p>
+  <div class="lp-intro">
+    <p>Play through real scenarios, get instant feedback, and build financial confidence—no reading required.</p>
+    <a href="assets/demo.mp4" class="lp-demo-link" aria-label="Watch Demo Video" target="_blank">🎬 Watch Demo</a>
+  </div>
+  <a [routerLink]="['/onboarding']" class="lp-btn lp-btn-voice" aria-label="Start Talking to FinPlay">🎤 Start Talking</a>
+  <div class="lp-secondary">
+    <a [routerLink]="['/onboarding']" class="lp-btn lp-btn-guest" aria-label="Continue as Guest">Continue as Guest</a>
+    <button class="lp-btn lp-btn-login" aria-label="Log In">Log In</button>
+  </div>
+  <div class="lp-how">
+    <details>
+      <summary>How does FinPlay work?</summary>
+      <ul>
+        <li>Speak or chat in your language</li>
+        <li>Simulate real-life money choices</li>
+        <li>Earn XP & badges for smart decisions</li>
+        <li>Track savings and progress daily</li>
+      </ul>
+    </details>
+  </div>
+</main>
+<footer class="lp-footer">
+  <small>&copy; 2025 FinPlay</small>
+</footer>
